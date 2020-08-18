@@ -127,7 +127,7 @@ func main() {
 	var hsvar string
 	var hcvar string
 
-	flag.StringVar(&hostvar, "h", "", "base apex domain to enumerate agains, eg: example.com")
+	flag.StringVar(&hostvar, "H", "", "base apex domain to enumerate agains, eg: example.com")
 	flag.StringVar(&wordlist, "w", "", "path to wordlist to use, eg: /usr/share/subdomains.txt")
 	flag.BoolVar(&virtualmode, "v", false, "enumerate subdomains by virtual hosts instead of DNS lookup")
 	flag.StringVar(&ipvar, "ip", "", "IP used for virtual hosting (REQUIRED), eg: 127.0.0.1")
@@ -137,6 +137,7 @@ func main() {
 	flag.Parse()
 
 	if len(hostvar) == 0 || len(wordlist) == 0 {
+		flag.Usage()
 		os.Exit(1)
 	}
 	// print banner and echo back settings used
